@@ -30,13 +30,13 @@ public class PostMethod {
 		try{
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 			//nameValuePairs.add(new BasicNameValuePair("POST", "http://cs5221.oko.io:8000/api/device/check-in HTTP/1.1"));
-			nameValuePairs.add(new BasicNameValuePair("ACCEPT", "*/*"));
-			nameValuePairs.add(new BasicNameValuePair("Content-Length", "102"));
-			nameValuePairs.add(new BasicNameValuePair("Accept-Encoding", "identity"));
-			nameValuePairs.add(new BasicNameValuePair("Content-Type", "application/x-www-form-urlencoded"));
-			nameValuePairs.add(new BasicNameValuePair("User-Agent", "NativeHost"));
-			nameValuePairs.add(new BasicNameValuePair("Host", "cs5221.oko.io:8000"));
-			nameValuePairs.add(new BasicNameValuePair("Connection", "Keep-Alive"));
+			//nameValuePairs.add(new BasicNameValuePair("ACCEPT", "*/*"));
+			//nameValuePairs.add(new BasicNameValuePair("Content-Length", "102"));
+			//nameValuePairs.add(new BasicNameValuePair("Accept-Encoding", "identity"));
+			//nameValuePairs.add(new BasicNameValuePair("Content-Type", "application/x-www-form-urlencoded"));
+			//nameValuePairs.add(new BasicNameValuePair("User-Agent", "NativeHost"));
+			//nameValuePairs.add(new BasicNameValuePair("Host", "cs5221.oko.io:8000"));
+			//nameValuePairs.add(new BasicNameValuePair("Connection", "Keep-Alive"));
 			nameValuePairs.add(new BasicNameValuePair("device_id", "667252485e9c43fea5912ad1f291e787"));
 			nameValuePairs.add(new BasicNameValuePair("latitude", "48.645"));
 			nameValuePairs.add(new BasicNameValuePair("longitude", "-121.141"));
