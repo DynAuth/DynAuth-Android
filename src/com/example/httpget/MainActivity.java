@@ -30,11 +30,17 @@ public class MainActivity extends Activity {
     	
     }
     
-    /** Called when the user clicks the POST button */
-    public void postRequest(View view){
+    /** Called when the user clicks the CHECK IN button */
+    public void postCheckInRequest(View view){
     	
-    	Intent intent = new Intent(this, HttpPostExample.class);
+    	Intent intent = new Intent(this, HttpPostCheckIn.class);
     	startActivity(intent);
+    }
+    
+    public void postRegisterRequest(View view){
+    	
+    	Intent intent = new Intent(this, HttpPostRegister.class);
+    	startActivity(intent);    
     }
     
 }
