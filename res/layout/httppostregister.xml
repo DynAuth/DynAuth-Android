@@ -8,16 +8,7 @@
         android:id="@+id/tvHttpP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hit SUBMIT" />
-
-
-    <Button
-        android:id="@+id/mButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Submit"
-        android:onClick="" />
+        android:text="Submitting information..." />
     
     <ScrollView
         android:layout_width="fill_parent"

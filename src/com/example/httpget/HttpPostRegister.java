@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 public class HttpPostRegister extends Activity {
@@ -21,7 +21,7 @@ TextView httpStuff;
 			
 			PostRegisterMethod test = new PostRegisterMethod();
 			String returned;
-			String key;		
+				
 			try {
 				
 				returned = test.postInternetData();

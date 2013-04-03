@@ -18,18 +18,9 @@
         android:layout_marginTop="23dp"
         android:text="         " />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:layout_marginLeft="34dp"
-        android:onClick="postRegisterRequest"
-        android:text="Register Device" />
-
-<!--      <EditText
+<!--Text Fields to allow username and password to be user-inputted. Implemented next iteration when phone can handle
+requests asynchronously and when the server can handle new creations 
+     <EditText
         android:id="@+id/usernameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,15 +41,44 @@
         <requestFocus />
     </EditText>
 -->
+    
+<!--Hides the AddRegion Button because method not fully functional - awaiting discussion with professor 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button2"
+        android:layout_centerVertical="true"
+        android:onClick="postRegionRequest"
+        android:text="Add Region" />
+ -->
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:text="Android GeoAuth 1.0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:onClick="postRegisterRequest"
+        android:text="Register Device" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_marginBottom="76dp"
-        android:layout_marginLeft="26dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
         android:onClick="postCheckInRequest"
         android:text="Check In" />
 

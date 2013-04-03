@@ -59,9 +59,7 @@ public class PostCheckInMethod extends Activity {
 		
 		try{
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-			
-		
-			//String.valueOf(longitude)
+			//Check-in takes (device_id, latitude, longitude, time(YYYY-MM-DD HH:MM:SS)) pairs
 			nameValuePairs.add(new BasicNameValuePair("device_id", "667252485e9c43fea5912ad1f291e787"));
 			nameValuePairs.add(new BasicNameValuePair("latitude", latitude ));
 			nameValuePairs.add(new BasicNameValuePair("longitude", longitude ));
@@ -74,7 +72,7 @@ public class PostCheckInMethod extends Activity {
 			HttpEntity entity = response.getEntity();
 			InputStream ins = entity.getContent();
 			
-			//RETRIEVE THE RESPONSE :D
+			//RETRIEVE THE RESPONSE
 			BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
 			StringBuilder sb = new StringBuilder();
 			

@@ -21,9 +21,6 @@ import org.apache.http.message.BasicNameValuePair;
 import android.app.Activity;
 import android.widget.Toast;
 
-
-
-
 public class RetrieveKeyMethod extends Activity {
 		
 public StringBuilder keyData() throws Exception{
@@ -32,9 +29,10 @@ public StringBuilder keyData() throws Exception{
 		URI website = new URI("http://cs5221.oko.io:8000/api/service/request-device-key");
 		HttpClient client = new DefaultHttpClient();
 		HttpPost client_post = new HttpPost(website);
-	
+				
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 		
+		//Retrieve registration key by sending (api_key) pair
 		nameValuePairs.add(new BasicNameValuePair("api_key", "570915b1b5cb4db6981f463b48d09ad8"));
 		
 		client_post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -44,7 +42,6 @@ public StringBuilder keyData() throws Exception{
 		HttpEntity entity = response.getEntity();
 		InputStream ins = entity.getContent();
 
-		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(ins));
 		StringBuilder sb = new StringBuilder();
 		
@@ -71,14 +68,7 @@ public StringBuilder keyData() throws Exception{
 		data = sb.toString();
 		
 		return sb;
-		
-		
-		
 	}
-
-
-			
-			
 }
 		
 	

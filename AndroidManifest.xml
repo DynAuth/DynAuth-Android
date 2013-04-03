@@ -59,10 +59,14 @@
             
         </activity>
         
-       
-        
-              
+        <activity
+            android:name="com.example.httpget.HttpPostRegion"
+            android:label="@string/unknown_string"
+            android:parentActivityName="com.example.httpget.MainActivity">
+            <meta-data 
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.httpget.MainActivity" />
+        </activity>
+                     
     </application>
-    
-
-</manifest>
+  </manifest>

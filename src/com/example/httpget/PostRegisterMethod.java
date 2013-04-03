@@ -29,8 +29,7 @@ import android.widget.Toast;
 public class PostRegisterMethod extends Activity {
 	
 	RetrieveKeyMethod getKey = new RetrieveKeyMethod();
-	
-	
+		
 	public String postInternetData() throws Exception{
 		
 		String data = null;
@@ -42,6 +41,9 @@ public class PostRegisterMethod extends Activity {
 		String defaultUsername = "gerr0041";
 		String defaultPassword = "porkchop";
 		
+		/////////////////////////////////////////////////////////////////////////////////
+		//THIS WILL BE UNCOMMENTED WHEN GPS LOCATION SERVICES START WORKING ON MY PHONE//
+		/////////////////////////////////////////////////////////////////////////////////
 		//EditText ueditText = (EditText)findViewById(R.id.usernameText);
 		//ueditText.setText("Username", TextView.BufferType.EDITABLE);
 		//EditText peditText = (EditText)findViewById(R.id.passwordText);
@@ -54,7 +56,6 @@ public class PostRegisterMethod extends Activity {
 						
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 			//REGISTER = device_key, device_name, username, password
-			
 			nameValuePairs.add(new BasicNameValuePair("username", defaultUsername));
 			nameValuePairs.add(new BasicNameValuePair("password", defaultPassword));
 			nameValuePairs.add(new BasicNameValuePair("device_key", regKey));
@@ -99,8 +100,6 @@ public class PostRegisterMethod extends Activity {
 			
 		}
 		return data;
-		
-		
 	}
 	
 }
