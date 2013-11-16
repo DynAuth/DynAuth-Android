@@ -1,0 +1,9 @@
+*.swp
+*.so
+*.bak
+*.class
+.dropbox
+.idea
+.settings
+bin
+desktop.ini
