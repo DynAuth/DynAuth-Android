@@ -8,8 +8,8 @@ import java.util.Enumeration;
 
 public class Ip_addr {
 	// public static String ip_address="10.3.16.130";
-	public static String server_ip_address = "172.16.1.238";
-
+//	public static String server_ip_address = "172.16.1.214";
+public static String server_ip_address = "173.252.202.202";
 	// public static String ip_address="172.16.1.222";
 	// public static String self_ip="";
 
